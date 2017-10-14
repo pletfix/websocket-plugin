@@ -2,6 +2,7 @@
     "name": "pletfix/websocket-plugin",
     "description": "Web Socket Plugin for Pletfix",
     "keywords": ["pletfix", "plugin", "websocket"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Frank Rohlfing",
