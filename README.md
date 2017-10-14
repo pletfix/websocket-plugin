@@ -24,11 +24,11 @@ web socket server.
 
 Fetch the package by running the following terminal command under the application's directory:
 
-    composer require pletfix/websocket
+    composer require pletfix/websocket-plugin
 
 After downloading, enter this command in your terminal to register the plugin:
 
-    php console plugin pletfix/websocket
+    php console plugin pletfix/websocket-plugin
 
 ## Configuration
     
