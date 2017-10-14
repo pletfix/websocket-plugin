@@ -40,7 +40,7 @@ defaults, if you have a port conflict on your system.
 
 ### Start the Web Socket Server
 
-![Screenshot Server](https://raw.githubusercontent.com/pletfix/websocket-plugin/master/screenshot_server.png)
+![Screenshot Server](https://raw.githubusercontent.com/pletfix/websocket-plugin/master/screenshot1.png)
     
 Start the web socket server via shell:
 
@@ -56,7 +56,7 @@ php console websocket:serve > /dev/null 2>&1 &
     
 ### Web Socket Example
     
-![Screenshot Example](https://raw.githubusercontent.com/pletfix/websocket-plugin/master/screenshot_example.png)
+![Screenshot Example](https://raw.githubusercontent.com/pletfix/websocket-plugin/master/screenshot2.png)
     
 First, to be able to call the example, add this route entries into `boot/routes.php`:
    
