@@ -24,6 +24,8 @@ class WebSocketController extends Controller
      */
     public function push()
     {
-        websocket()->push(json_encode(['message' => datetime()->toDateTimeString()]));
+        websocket()->push(json_encode([
+            'text' => datetime()->toDateTimeString()
+        ]));
     }
 }

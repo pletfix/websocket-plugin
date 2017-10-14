@@ -38,8 +38,8 @@ class WebSocket implements WebSocketContract
     /**
      * @inheritdoc
      */
-    public function push($msg)
+    public function push($message)
     {
-        $this->pushSocket->send($msg);
+        $this->pushSocket->send($message);
     }
 }

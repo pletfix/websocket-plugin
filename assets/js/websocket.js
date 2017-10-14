@@ -108,7 +108,7 @@
 
             if (typeof trigger.onmessage !== 'undefined') {
                 socket.onmessage = function (event) {
-                    trigger.onmessage(JSON.parse(event.data));
+                    trigger.onmessage(event.data);
                 };
             }
 
@@ -145,11 +145,11 @@
     /**
      * Sends a message.
      *
-     * @param data Data to send.
+     * @param message Message to send.
      */
-    websocket.send = function(data) {
+    websocket.send = function(message) {
         try {
-            socket.send(JSON.stringify(data));
+            socket.send(message);
         }
         catch (exception) {
             if (typeof trigger.onerror !== 'undefined') {

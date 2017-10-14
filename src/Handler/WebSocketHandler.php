@@ -50,19 +50,19 @@ class WebSocketHandler implements WebSocketHandlerContract
     /**
      * @inheritdoc
      */
-    public function onMessage(ConnectionInterface $from, $msg)
+    public function onMessage(ConnectionInterface $from, $message)
     {
-        $this->trace($from, $msg);
-        $this->broadcastExclude($msg, [$from]);
+        $this->trace($from, $message);
+        $this->broadcastExclude($message, [$from]);
     }
 
     /**
      * @inheritdoc
      */
-    public function onPush($msg)
+    public function onPush($message)
     {
-        $this->trace(null, $msg);
-        $this->broadcast($msg);
+        $this->trace(null, $message);
+        $this->broadcast($message);
     }
 
     /**
@@ -78,32 +78,32 @@ class WebSocketHandler implements WebSocketHandlerContract
      * Send a message to a client.
      *
      * @param ConnectionInterface $to The connection which receive the message.
-     * @param string $msg The message to send.
+     * @param string $message The message to send.
      */
-    protected function send(ConnectionInterface $to, $msg)
+    protected function send(ConnectionInterface $to, $message)
     {
-        $to->send($msg);
+        $to->send($message);
     }
 
     /**
      * Send a message to all clients.
      *
-     * @param string $msg The message to send.
+     * @param string $message The message to send.
      */
-    protected function broadcast($msg)
+    protected function broadcast($message)
     {
         foreach ($this->connections as $conn) {
-            $conn->send($msg);
+            $conn->send($message);
         }
     }
 
     /**
      * Send a message to all clients except the clients listed in the blacklist.
      *
-     * @param string $msg The message to send.
+     * @param string $message The message to send.
      * @param array $exclude Blacklist
      */
-    protected function broadcastExclude($msg, array $exclude)
+    protected function broadcastExclude($message, array $exclude)
     {
         $exclude = array_map(function($conn) {
             return $conn->resourceId;
@@ -111,7 +111,7 @@ class WebSocketHandler implements WebSocketHandlerContract
 
         foreach ($this->connections as $conn) {
             if (!in_array($conn->resourceId, $exclude)) {
-                $conn->send($msg);
+                $conn->send($message);
             }
         }
     }

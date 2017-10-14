@@ -18,8 +18,9 @@
                 trace('Socket closed: ' + reason + ' (' + code + ')');
             });
 
-            websocket.on('message', function(data) {
-                trace('Received: ' + data.message);
+            websocket.on('message', function(message) {
+                var data = JSON.parse(message);
+                trace('Received: ' + data.text);
             });
 
             websocket.on('error', function() {
@@ -53,25 +54,25 @@
                 return;
             }
 
-            var inputField = $('#message');
-            var text = inputField.val();
-            if (text == '') {
+            var input = $('#message');
+            var value = input.val();
+            if (value === '') {
                 trace('Please enter a message');
                 return;
             }
             var data = {
-                message: text
+                text: value
             };
 
-            websocket.send(data);
-            trace('Sent: ' + text);
+            websocket.send(JSON.stringify(data));
 
-            inputField.val('');
+            trace('Sent: ' + value);
+            input.val('');
         }
 
-        function trace(msg) {
+        function trace(message) {
             var div = $('#chat-log');
-            div.append(msg + '<br/>');
+            div.append(message + '<br/>');
             div.scrollTop(div.prop('scrollHeight'));
         }
     </script>
