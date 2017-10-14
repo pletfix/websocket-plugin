@@ -75,7 +75,7 @@ https://<your-application>/websocket/chat
 You can push the current time from the web server to the clients with this URL:
 
 ```http
-https://<your-application>/vendor/pletfix/websocket/push
+https://<your-application>/websocket/push
 ```
 
 ### Web Socket Service 
