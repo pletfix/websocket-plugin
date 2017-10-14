@@ -28,14 +28,7 @@ Fetch the package by running the following terminal command under the applicatio
 
 After downloading, enter this command in your terminal to register the plugin:
 
-    php console plugin pletfix/websocket --add-routes
-  
-> **Important:**
->
-> The `add-routes` option causes the routes to be created for the embedded sample. After trying the example, 
-> you should remove the routes using the following command, so that the example can not be called again:
->
->     php console plugin pletfix/websocket -u
+    php console plugin pletfix/websocket
 
 ## Configuration
     
@@ -46,6 +39,8 @@ defaults, if you have a port conflict on your system.
 ## Usage
 
 ### Start the Web Socket Server
+
+![Screenshot1](https://raw.githubusercontent.com/pletfix/websocket-plugin/master/screenshot_server.png)
     
 Start the web socket server via shell:
 
@@ -61,10 +56,20 @@ php console websocket:serve > /dev/null 2>&1 &
     
 ### Web Socket Example
     
+![Screenshot1](https://raw.githubusercontent.com/pletfix/websocket-plugin/master/screenshot_client.png)
+    
+First, to be able to call the example, add this route entries into `boot/routes.php`:
+   
+    $router->get('websocket/chat', 'WebSocketController@chat');
+    $router->get('websocket/push', 'WebSocketController@push');
+    
+> Note, that the routes are deliberately has not installed by the registration procedure, because that are only needed 
+> for the example. Don't forget to remove the routes when you no longer need the example.
+        
 Call the example via browser (preferably with two so that you can send messages back and forth :-)   
 
 ```http
-https://<your-application>/vendor/pletfix/websocket/chat
+https://<your-application>/websocket/chat
 ```
 
 You can push the current time from the web server to the clients with this URL:
